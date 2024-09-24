@@ -13,7 +13,7 @@ const characters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", 
 
 function generate() {
     let resultStringOne = ""
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 16; i++) {
         let randomIndex = Math.floor(Math.random() * characters.length)
         resultStringOne += characters[randomIndex]
     }
@@ -22,7 +22,7 @@ function generate() {
     setTimeout(() => outputElOne.classList.remove("scale"), 300)
 
     let resultStringTwo = ""
-    for (let i = 0; i < 8; i++) {
+    for (let i = 0; i < 16; i++) {
         let randomIndex = Math.floor(Math.random() * characters.length)
         resultStringTwo += characters[randomIndex]
     }
