@@ -1,0 +1,98 @@
+body {
+    margin: 0;
+    font-family: 'karla', sans-serif;
+    font-style: normal;
+}
+
+.container-main {
+    max-width: 550px;
+    height: 550px;
+    background-image: url(Gradient.png);
+    background-position: center;
+    background-size: cover;
+    border-radius: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+}
+
+.headline {
+    padding-top: 95px;
+    padding-left: 52px;
+    line-height: 1;
+}
+
+#heading-txt {
+    font-size: 40px;
+}
+
+#small-txt {
+    font-size: 20px;
+}
+
+#generate-el {
+    padding: 15px;
+    padding-left: 18px;
+    padding-right: 18px;
+    margin-left: 52px;
+    margin-top: 30px;
+    font-size: 16px;
+    background-color: rgba(0, 0, 0, 0.874);
+    transition: 
+        background-color 0.3s ease,  
+        transform 0.3s ease,          
+        letter-spacing 0.3s ease,   
+        box-shadow 0.5s ease; 
+    cursor: pointer;
+    border: none;
+    border-radius: 50px;
+    font-weight: bolder;
+    color: #89e7ff;
+    letter-spacing: 0px;
+    outline: none; 
+    box-shadow: 0 0 0 5px transparent; 
+}
+
+#generate-el:hover {
+    color: #89e7ff;                              
+    letter-spacing: 1px;     
+    box-shadow: 0 0 8px 4px rgba(166, 254, 255, 0.924);
+}
+
+
+.line {
+    border-bottom: 1px solid #000000; 
+    max-width: 446px;
+    margin-left: 52px;
+    padding-top: 45px;
+}
+
+.output-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 446px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 40px;
+}
+
+.outputs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(0, 0, 0);
+    width: 211px;
+    height: 39px;
+    border-radius: 20px;
+    color: white;
+}
+
+.scale {
+    color: #ffffff;
+    transform: scale(1.03); 
+    transition: 
+        background-color 0.3s ease,  
+        transform 0.3s ease,          
+        letter-spacing 0.3s ease; 
+}
