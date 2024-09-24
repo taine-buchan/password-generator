@@ -81,7 +81,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.874);
     width: 211px;
     height: 39px;
     border-radius: 20px;
