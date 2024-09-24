@@ -6,7 +6,7 @@ body {
 
 .container-main {
     max-width: 550px;
-    height: 550px;
+    min-height: 550px;
     background-image: url(Gradient.png);
     background-position: center;
     background-size: cover;
@@ -37,6 +37,7 @@ body {
     margin-left: 52px;
     margin-top: 30px;
     font-size: 16px;
+    font-weight: 500 !important;
     background-color: rgba(0, 0, 0, 0.874);
     transition: 
         background-color 0.3s ease,  
@@ -47,21 +48,20 @@ body {
     border: none;
     border-radius: 50px;
     font-weight: bolder;
-    color: #89e7ff;
-    letter-spacing: 0px;
+    color: #ffffff;
+    letter-spacing: 1px;
     outline: none; 
     box-shadow: 0 0 0 5px transparent; 
 }
 
-#generate-el:hover {
-    color: #89e7ff;                              
-    letter-spacing: 1px;     
-    box-shadow: 0 0 8px 4px rgba(166, 254, 255, 0.924);
+#generate-el:hover {                             
+    letter-spacing: 2px;     
+    box-shadow: 0 0 8px 4px rgba(255, 255, 255, 0.845);
 }
 
 
 .line {
-    border-bottom: 1px solid #000000; 
+    border-bottom: 1px solid rgba(0, 0, 0, 0.874); 
     max-width: 446px;
     margin-left: 52px;
     padding-top: 45px;
@@ -72,7 +72,7 @@ body {
     justify-content: space-between;
     align-items: center;
     max-width: 446px;
-    margin-left: auto;
+    margin-left: 52px;
     margin-right: auto;
     margin-top: 40px;
 }
@@ -92,7 +92,6 @@ body {
     color: #ffffff;
     transform: scale(1.03); 
     transition: 
-        background-color 0.3s ease,  
         transform 0.3s ease,          
         letter-spacing 0.3s ease; 
 }
