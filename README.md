@@ -1,6 +1,6 @@
 **Password Generator**:
 
-Simple and password generator built to help users create random passwords. 
+Simple password generator built to help users create random passwords. 
 
 - This is a project I did for as apart of the Scrimba javascript module.
 - I did some reading on Math.random() and understand it's a relatively weak algorithm that is easily exploitable.
