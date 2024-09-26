@@ -96,17 +96,6 @@ function generate() {
 // Mute button functionality
 const muteButton = document.getElementById('mute-btn');
 const audioElements = document.querySelectorAll('audio');
-let isMuted = false;
-
-muteButton.addEventListener('click', function () {
-    isMuted = !isMuted;
-
-    audioElements.forEach(audio => {
-        audio.muted = isMuted;
-    });
-
-    muteButton.textContent = isMuted ? 'Unmute' : 'Mute';
-});
 
 // Event listener for click event
 const muteBtn = document.getElementById('mute-btn');
