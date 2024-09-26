@@ -15,9 +15,13 @@ const characters = [
 
 const rangeSlider = document.getElementById('character-bar');
 const valueDisplay = document.getElementById('slider-value');
+const muteBtn = document.getElementById('mute-btn');
+const audioElements = document.querySelectorAll('audio');
+let isMuted = false; // Track mute state
+let isMusicPlayed = false; // Track if background music has been played
 
+// Set initial audio volume
 window.addEventListener('DOMContentLoaded', function() {
-    const audioElements = document.querySelectorAll('audio');
     audioElements.forEach(audio => {
         audio.volume = 0.1; // Set initial volume
     });
@@ -25,6 +29,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
 valueDisplay.textContent = rangeSlider.value;
 
+// Update display and play click sound on slider input
 rangeSlider.addEventListener('input', function () {
     valueDisplay.style.opacity = '0';
     setTimeout(() => {
@@ -35,8 +40,7 @@ rangeSlider.addEventListener('input', function () {
     clickSound.play();
 });
 
-let isMusicPlayed = false; // Flag to track if background music has been played
-
+// Function to adjust font size based on text length
 function adjustFontSize(outputElement, textLength) {
     if (textLength <= 10) {
         outputElement.style.fontSize = '20px';
@@ -51,9 +55,9 @@ function adjustFontSize(outputElement, textLength) {
     }
 }
 
+// Generate random strings
 function generate() {
     let valueLength = parseInt(rangeSlider.value);
-
     let resultStringOne = "";
     let resultStringTwo = "";
 
@@ -86,7 +90,7 @@ function generate() {
     }
 
     // Add bounce effect and adjust font size
-    ;[outputElOne, outputElTwo].forEach(output => {
+    [outputElOne, outputElTwo].forEach(output => {
         output.classList.add("bounce");
         adjustFontSize(output, output.textContent.length);
         setTimeout(() => output.classList.remove("bounce"), 500);
@@ -94,34 +98,27 @@ function generate() {
 }
 
 // Mute button functionality
-const muteButton = document.getElementById('mute-btn');
-const audioElements = document.querySelectorAll('audio');
-
-// Event listener for click event
-const muteBtn = document.getElementById('mute-btn');
-
 muteBtn.addEventListener('click', function() {
-    // Toggle between volume-up and volume-mute classes
-    if (muteBtn.classList.contains('volume-up')) {
-        muteBtn.classList.remove('volume-up');
-        muteBtn.classList.add('volume-mute');
-    } else {
-        muteBtn.classList.remove('volume-mute');
-        muteBtn.classList.add('volume-up');
-    }
+    isMuted = !isMuted; // Toggle mute state
+    audioElements.forEach(audio => {
+        audio.volume = isMuted ? 0 : 0.1; // Set volume based on mute state
+    });
+    
+    // Toggle classes for visual feedback
+    muteBtn.classList.toggle('volume-up', !isMuted);
+    muteBtn.classList.toggle('volume-mute', isMuted);
 });
 
+// Copy to clipboard function
 function copyToClipboard(outputId) {
-    const outputElement = document.getElementById(outputId); // Make sure to pass the correct ID
+    const outputElement = document.getElementById(outputId);
     const textToCopy = outputElement.textContent;
 
     navigator.clipboard.writeText(textToCopy).then(() => {
         console.log('Text copied to clipboard:', textToCopy);
-        // Optionally provide feedback to the user (e.g., an alert or message)
         alert('Copied to clipboard: ' + textToCopy);
     }).catch(err => {
         console.error('Failed to copy: ', err);
     });
 }
-
 
