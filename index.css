@@ -15,8 +15,36 @@ body {
     box-shadow: inset 0 0 5px 10px rgba(0, 0, 0, 0.082);
 }
 
+#mute {
+    margin: 0px;
+    padding: 20px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+#mute-btn {
+    color: rgba(0, 0, 0, 0);
+    height: 40px;
+    width: 40px;
+    margin: 0;
+    border-radius: 50%;
+    border: none;
+    background-color: rgba(255, 255, 255, 0);
+    background-size: cover; /* Ensures the image covers the button */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents the image from repeating */
+}
+
+.volume-up {
+    background-image: url('volume-up.png');
+}
+
+.volume-mute {
+    background-image: url('volume-mute.png');
+}
+
 .headline {
-    padding: 95px 0 0 52px; /* Combined padding */
+    padding: 0px 0 0 52px; /* Combined padding */
     line-height: 1;
 }
 
@@ -32,7 +60,7 @@ body {
 
 .first-line {
     display: flex;
-    padding: 20px 0 0 48px; /* Combined padding */
+    padding: 20px 0 0 48px;
     gap: 25px;
 }
 
@@ -87,8 +115,8 @@ body {
 #character-bar::-webkit-slider-thumb {
     border: none;
     appearance: none;
-    width: 30px; /* Circle size */
-    height: 30px; /* Circle size */
+    width: 30px; 
+    height: 30px; 
     background: rgb(157, 222, 255);
     border-radius: 50%; 
     cursor: pointer;
@@ -165,3 +193,4 @@ body {
 .outputs:hover {
     cursor: copy;
 }
+
