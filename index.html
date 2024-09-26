@@ -13,13 +13,24 @@
 </head>
 
 <body>
+
+    <audio id="soundEffect" src="generatevone.mp3" preload="auto"></audio>
+    <audio id="backgroundMusic" src="generatevtwo.mp3" loop preload="auto"></audio>
+    <audio id="click" src="click.mp3" preload="auto"></audio>
+
     <div class="container-main">
+
+        <div id="mute">
+            <button id="mute-btn" class="volume-up"></button>
+        </div>
+
         <header class="headline">
             <h1 id="heading-txt"> Generate a
                 <br id="bold-txt">random password</br>
             </h1>
             <p id="small-txt">Never use an insecure password again.</p>
         </header>
+
         <section class="first-line">
             <button class="pwd-btns" id="generate-el" onclick="generate()">Generate Password
             </button>
@@ -28,8 +39,9 @@
                 <p id="length-title">Length | <span id="slider-value"></span></p>
                 <input type="range" id="character-bar" min="8" max="24" value="16">
             </section>
-            
+
         </section>
+
         <div class="line"></div>
 
         <div class="output-container" id="output-el">
@@ -38,7 +50,7 @@
                     ****************
                 </div>
             </div>
-            <!-- Clickable div for output one -->
+        
             <div class="outputs" id="output-el-two" onclick="copyToClipboard('output-el-two')">
                 <div class="output-text">
                     ****************
