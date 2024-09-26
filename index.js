@@ -122,3 +122,17 @@ muteBtn.addEventListener('click', function() {
     }
 });
 
+function copyToClipboard(outputId) {
+    const outputElement = document.getElementById(outputId); // Make sure to pass the correct ID
+    const textToCopy = outputElement.textContent;
+
+    navigator.clipboard.writeText(textToCopy).then(() => {
+        console.log('Text copied to clipboard:', textToCopy);
+        // Optionally provide feedback to the user (e.g., an alert or message)
+        alert('Copied to clipboard: ' + textToCopy);
+    }).catch(err => {
+        console.error('Failed to copy: ', err);
+    });
+}
+
+
