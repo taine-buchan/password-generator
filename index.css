@@ -1,6 +1,6 @@
 body {
     margin: 0;
-    font-family: 'karla', sans-serif;
+    font-family: 'Karla', sans-serif;
     font-style: normal;
 }
 
@@ -11,15 +11,12 @@ body {
     background-position: center;
     background-size: cover;
     border-radius: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
+    margin: 30px auto 0; /* Combined margin settings */
     box-shadow: inset 0 0 5px 10px rgba(0, 0, 0, 0.082);
 }
 
 .headline {
-    padding-top: 95px;
-    padding-left: 52px;
+    padding: 95px 0 0 52px; /* Combined padding */
     line-height: 1;
 }
 
@@ -33,33 +30,83 @@ body {
     font-size: 20px;
 }
 
+.first-line {
+    display: flex;
+    padding: 20px 0 0 48px; /* Combined padding */
+    gap: 25px;
+}
+
 #generate-el {
-    padding: 15px;
-    padding-left: 18px;
-    padding-right: 18px;
-    margin-left: 52px;
-    margin-top: 30px;
+    padding: 15px 20px;
     font-size: 16px;
     font-weight: 500 !important;
     background-color: rgb(0, 0, 0);
-    transition:
-        letter-spacing 0.3s ease;
+    transition: letter-spacing 0.3s ease;
     cursor: pointer;
     border: none;
     border-radius: 50px;
-    font-weight: bolder;
     color: #ffffff;
     letter-spacing: 1px;
     outline: none;
-    box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.244),
-        0 0 4px 4px rgb(1, 136, 176);
+    box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.244), 
+                0 0 4px 4px rgb(1, 136, 176);
 }
 
 #generate-el:hover {
     letter-spacing: 3px;
-
 }
 
+#length-title {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+}
+
+#slider {
+    display: flex;         
+    flex-direction: column;
+    gap: 12px;            
+}
+
+#slider-value {
+    margin-left: 6px; /* Space between label and value */
+    font-weight: 900 !important;
+    transition: opacity 0.3s ease;
+}
+
+#character-bar {
+    width: 100%;
+    appearance: none;
+    border-radius: 20px;
+    background-color: rgb(0, 0, 0);
+    box-shadow: inset 0 0 10px 2px rgba(255, 255, 255, 0.244), 
+                0 0 3px 3px rgb(1, 136, 176);
+    height: 20px;
+}
+
+#character-bar::-webkit-slider-thumb {
+    border: none;
+    appearance: none;
+    width: 30px; /* Circle size */
+    height: 30px; /* Circle size */
+    background: rgb(157, 222, 255);
+    border-radius: 50%; 
+    cursor: pointer;
+    position: relative; 
+    box-shadow: inset 0 0 10px 2px rgba(255, 255, 255, 0.318), 
+                inset 0 0 10px 8px rgba(255, 255, 255, 0.844), 
+                0 0 3px 3px rgba(6, 136, 176, 0.591);
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transitions */
+}
+
+#character-bar::-webkit-slider-thumb:hover {
+    background: rgb(63, 188, 255); /* Change color on hover */
+    transform: scale(1.1); /* Slightly enlarge the thumb */
+    box-shadow: inset 0 0 10px 2px rgba(255, 255, 255, 0.318), 
+                inset 0 0 10px 8px rgba(255, 255, 255, 0.844), 
+                0 0 3px 3px rgba(6, 136, 176);
+    cursor: grab;
+}
 
 .line {
     border-bottom: 1px solid rgba(0, 0, 0, 0.766);
@@ -68,14 +115,30 @@ body {
     padding-top: 45px;
 }
 
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    20% {
+        transform: translateY(-10px); /* Peak height of the bounce */
+        animation-timing-function: ease-in; /* Start slow */
+    }
+    30% {
+        transform: translateY(0); /* Return to original position */
+        animation-timing-function: ease-out; /* Speed up as it falls */
+    }
+    100% {
+        transform: translateY(0); /* Slight bounce down */
+        animation-timing-function: ease; /* Start slow */
+    }
+}
+
 .output-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     max-width: 446px;
-    margin-left: 52px;
-    margin-right: auto;
-    margin-top: 40px;
+    margin: 40px 0 0 52px; /* Combined margin settings */
 }
 
 .outputs {
@@ -83,18 +146,22 @@ body {
     justify-content: center;
     align-items: center;
     background-color: rgb(0, 0, 0);
-    box-shadow: 
-        inset 0 0 10px 5px rgba(255, 255, 255, 0.224),
-        0 0 4px 4px rgb(6, 136, 176);
-    width: 211px;
-    height: 39px;
+    box-shadow: inset 0 0 10px 5px rgba(255, 255, 255, 0.224), 
+                0 0 4px 4px rgb(6, 136, 176);
+    width: 211px; /* Set a fixed width */
+    height: 39px; /* Set a fixed height */
     border-radius: 20px;
     color: white;
+    transition: transform 0.1s; /* Quick transition for instant feedback */
+    overflow: hidden; /* Prevent overflow from long text */
+    white-space: nowrap; /* Prevent text wrapping */
 }
 
-.scale {
-    transform: scale(1.03);
-    transition:
-        transform 0.3s ease,
-        letter-spacing 0.3s ease;
+/* Add bounce animation class */
+.bounce {
+    animation: bounce 0.8s; /* Quick bounce duration */
+}
+
+.outputs:hover {
+    cursor: copy;
 }
