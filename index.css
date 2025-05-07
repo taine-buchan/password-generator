@@ -1,22 +1,37 @@
+/* Base styles */
 body {
   margin: 0;
   font-family: 'Karla', sans-serif;
   font-style: normal;
+  background-color: black;
 }
 
 .container-main {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.container-generator {
+  width: 100%;
   max-width: 550px;
   min-height: 550px;
   background-image: url(public/images/Gradient.webp);
   background-position: center;
   background-size: cover;
   border-radius: 20px;
-  margin: 30px auto 0; /* Combined margin settings */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
 }
 
 #mute {
-  margin: 0px;
-  padding: 20px;
+  margin: 0;
+  padding: 15px;
   display: flex;
   justify-content: flex-end;
 }
@@ -43,24 +58,28 @@ body {
 }
 
 .headline {
-  padding: 0px 0 0 52px;
+  padding: 0 0 0 8%;
   line-height: 1;
 }
 
 #heading-txt {
-  font-size: 40px;
+  font-size: clamp(28px, 5vw, 40px);
   font-weight: 900 !important;
   color: rgba(0, 0, 0, 0.766);
+  margin-bottom: 8px;
 }
 
 #small-txt {
-  font-size: 20px;
+  font-size: clamp(16px, 3vw, 20px);
+  margin-top: 0;
 }
 
 .first-line {
   display: flex;
-  padding: 20px 0 0 48px;
+  flex-wrap: wrap;
+  padding: 20px 0 0 8%;
   gap: 25px;
+  align-items: center;
 }
 
 #generate-el {
@@ -81,20 +100,23 @@ body {
   letter-spacing: 1.4px;
 }
 
-#length-title {
-  display: flex;
-  flex-direction: row;
-  margin: 0;
-}
-
 #slider {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  width: 100%;
+  max-width: 300px;
+}
+
+#length-title {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  align-items: center;
 }
 
 #slider-value {
-  margin-left: 6px; /* Space between label and value */
+  margin-left: 6px;
   font-weight: 900 !important;
   transition: opacity 0.3s ease;
 }
@@ -104,7 +126,6 @@ body {
   appearance: none;
   border-radius: 20px;
   background-color: rgb(0, 0, 0);
-
   height: 20px;
 }
 
@@ -117,7 +138,7 @@ body {
   border-radius: 50%;
   cursor: pointer;
   position: relative;
-  box-shadow: inset 0 0 10px 2px rgb(255, 255, 255),
+  box-shadow: inset 0 0 10px 2px rgb(154, 117, 255),
     inset 0 0 10px 8px rgba(204, 0, 255, 0.413);
   transition: background-color 0.3s ease, transform 0.3s ease,
     box-shadow 0.3s ease;
@@ -131,9 +152,10 @@ body {
 
 .line {
   border-bottom: 1px solid rgba(0, 0, 0, 0.766);
+  width: 80%;
   max-width: 446px;
-  margin-left: 52px;
-  padding-top: 45px;
+  margin-left: 8%;
+  margin-top: 45px;
 }
 
 @keyframes bounce {
@@ -157,10 +179,13 @@ body {
 
 .output-container {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: flex-start;
   align-items: center;
+  width: 80%;
   max-width: 446px;
-  margin: 40px 0 0 52px; /* Combined margin settings */
+  margin: 40px 0 40px 8%;
+  gap: 15px;
 }
 
 .outputs {
@@ -168,21 +193,94 @@ body {
   justify-content: center;
   align-items: center;
   background-color: rgb(0, 0, 0);
-
-  width: 211px;
+  width: 100%;
+  max-width: 211px;
   height: 39px;
   border-radius: 20px;
   color: white;
   transition: transform 0.1s;
   overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0 15px;
+  box-sizing: border-box;
 }
 
-/* Add bounce animation class */
 .bounce {
-  animation: bounce 0.8s; /* Quick bounce duration */
+  animation: bounce 0.8s;
 }
 
 .outputs:hover {
   cursor: copy;
+}
+
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .container-generator {
+    min-height: 450px;
+  }
+
+  .first-line {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  #slider {
+    width: 80%;
+  }
+
+  .output-container {
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .outputs {
+    min-width: 45%;
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container-main {
+    padding: 10px;
+  }
+
+  .container-generator {
+    border-radius: 15px;
+  }
+
+  #mute {
+    padding: 10px;
+  }
+
+  #mute-btn {
+    height: 30px;
+    width: 30px;
+  }
+
+  .headline {
+    padding-left: 20px;
+  }
+
+  .first-line {
+    padding-left: 20px;
+  }
+
+  .line {
+    margin-left: 20px;
+    margin-top: 30px;
+  }
+
+  .output-container {
+    margin: 30px 0 30px 20px;
+    width: calc(100% - 40px);
+  }
+
+  .outputs {
+    height: 35px;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 10px;
+  }
 }
