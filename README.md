@@ -1,9 +1,25 @@
-**Password Generator**:
+**WIP** Password Generator 
 
-Simple password generator built to help users create random passwords. 
+A tool for generating random passwords with customizable options.
 
-- This is a project I did as part of the Scrimba javascript module.
-- I did some reading on Math.random() and understand it's a relatively weak algorithm that is easily exploitable.
-- My next step is to research and implement complex algorithms to generate more random passwords.
--  "The Web Crypto API provides the crypto.getRandomValues() method, which generates strong, cryptographically secure random values. This function fills a typed array (e.g.,                   Uint8Array) with cryptographically strong random values, making it suitable for security-sensitive applications like password generation."
-- Then add password features, allowing users to increment the password length, pick their symbols, clear fields etc. ✅
+Current Implementation:
+Uses Math.random() for basic randomness (note: not cryptographically secure).
+
+Features adjustable length and character sets (symbols, numbers, etc.).
+
+Includes copy/clear functionality.
+
+Planned Security Upgrades:
+🔒 Replacing Math.random() with the Web Crypto API’s crypto.getRandomValues() for:
+
+Stronger entropy via typed arrays (Uint8Array).
+
+Protection against predictability attacks.
+
+✨ Future Features:
+
+Password strength meter.
+
+Exclusion of ambiguous characters (e.g., l vs 1).
+
+Note: This project is a work in progress—security improvements are actively being researched .
