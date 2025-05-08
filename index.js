@@ -3,100 +3,6 @@ let outputElOne = document.getElementById('output-el-one')
 let outputElTwo = document.getElementById('output-el-two')
 const clickSound = document.getElementById('click')
 
-const characters = [
-  'A',
-  'B',
-  'C',
-  'D',
-  'E',
-  'F',
-  'G',
-  'H',
-  'I',
-  'J',
-  'K',
-  'L',
-  'M',
-  'N',
-  'O',
-  'P',
-  'Q',
-  'R',
-  'S',
-  'T',
-  'U',
-  'V',
-  'W',
-  'X',
-  'Y',
-  'Z',
-  'a',
-  'b',
-  'c',
-  'd',
-  'e',
-  'f',
-  'g',
-  'h',
-  'i',
-  'j',
-  'k',
-  'l',
-  'm',
-  'n',
-  'o',
-  'p',
-  'q',
-  'r',
-  's',
-  't',
-  'u',
-  'v',
-  'w',
-  'x',
-  'y',
-  'z',
-  '0',
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '~',
-  '`',
-  '!',
-  '@',
-  '#',
-  '$',
-  '%',
-  '^',
-  '&',
-  '*',
-  '(',
-  ')',
-  '_',
-  '-',
-  '+',
-  '=',
-  '{',
-  '[',
-  '}',
-  ']',
-  ',',
-  '|',
-  ':',
-  ';',
-  '<',
-  '>',
-  '.',
-  '?',
-  '/',
-]
-
 const rangeSlider = document.getElementById('character-bar')
 const valueDisplay = document.getElementById('slider-value')
 const muteBtn = document.getElementById('mute-btn')
@@ -141,51 +47,62 @@ function adjustFontSize(outputElement, textLength) {
 
 // Generate random strings
 function generate() {
-  let valueLength = parseInt(rangeSlider.value)
-  let resultStringOne = ''
-  let resultStringTwo = ''
-
-  for (let i = 0; i < valueLength; i++) {
-    let randomIndex = Math.floor(Math.random() * characters.length)
-    resultStringOne += characters[randomIndex]
-  }
-
-  for (let i = 0; i < valueLength; i++) {
-    let randomIndex = Math.floor(Math.random() * characters.length)
-    resultStringTwo += characters[randomIndex]
-  }
+  const valueLength = parseInt(rangeSlider.value)
+  const resultStringOne = generatePassword(valueLength)
+  const resultStringTwo = generatePassword(valueLength)
 
   outputElOne.textContent = resultStringOne
   outputElTwo.textContent = resultStringTwo
 
-  // Play sound effect
+  playSoundEffects()
+  handleBounceAnimation([outputElOne, outputElTwo])
+}
+
+function generatePassword(length) {
+  const characters =
+    'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+-=[]{}|;:,.<>?'
+  const charsetLength = characters.length
+  const password = []
+
+  const randomValues = new Uint32Array(length)
+  crypto.getRandomValues(randomValues)
+
+  for (let i = 0; i < length; i++) {
+    const index = randomValues[i] % charsetLength
+    password.push(characters.charAt(index))
+  }
+
+  return password.join('')
+}
+
+function playSoundEffects() {
   const soundEffect = document.getElementById('soundEffect')
   soundEffect.currentTime = 0
   soundEffect.play()
 
-  // Play background music only the first time
   const backgroundMusic = document.getElementById('backgroundMusic')
   if (!isMusicPlayed) {
-    backgroundMusic.currentTime = 0 // Reset to the beginning
+    backgroundMusic.currentTime = 0
     backgroundMusic.play().catch((error) => {
       console.log('Autoplay prevented: ', error)
     })
-    isMusicPlayed = true // Set flag to true after playing music
+    isMusicPlayed = true
   }
+}
 
-  // Add bounce effect and adjust font size
-  ;[outputElOne, outputElTwo].forEach((output) => {
-    output.classList.add('bounce')
-    adjustFontSize(output, output.textContent.length)
-    setTimeout(() => output.classList.remove('bounce'), 500)
+function handleBounceAnimation(elements) {
+  elements.forEach((el) => {
+    el.classList.add('bounce')
+    adjustFontSize(el, el.textContent.length)
+    setTimeout(() => el.classList.remove('bounce'), 500)
   })
 }
 
 // Mute button functionality
 muteBtn.addEventListener('click', function () {
-  isMuted = !isMuted // Toggle mute state
+  isMuted = !isMuted
   audioElements.forEach((audio) => {
-    audio.volume = isMuted ? 0 : 0.1 // Set volume based on mute state
+    audio.volume = isMuted ? 0 : 0.1
   })
 
   // Toggle classes for visual feedback
