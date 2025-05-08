@@ -1,25 +1,18 @@
-**WIP** Password Generator 
+🔐 Secure Password Generator (**WIP**)
 
-A tool for generating random passwords with customizable options.
+I started this mini project before I started coding at Dev Academy and thought I'd come back to it to refactor so I could include it on my portfolio.  
+---
+✅ Features
+  
+Custom Character Sets:
+- Uppercase letters (A-Z)
+- Lowercase letters (a-z)
+- Numbers (0-9)
+- Special symbols (!@#$%^&*)
 
-Current Implementation:
-Uses Math.random() for basic randomness (note: not cryptographically secure).
+Other features:
+- One-Click Copy - Easily copy passwords to clipboard
+- Clear Function - Reset the interface with one click
+- Security-First Design - Using Web Crypto API for true randomness
 
-Features adjustable length and character sets (symbols, numbers, etc.).
 
-Includes copy/clear functionality.
-
-Planned Security Upgrades:
-🔒 Replacing Math.random() with the Web Crypto API’s crypto.getRandomValues() for:
-
-Stronger entropy via typed arrays (Uint8Array).
-
-Protection against predictability attacks.
-
-✨ Future Features:
-
-Password strength meter.
-
-Exclusion of ambiguous characters (e.g., l vs 1).
-
-Note: This project is a work in progress—security improvements are actively being researched .
